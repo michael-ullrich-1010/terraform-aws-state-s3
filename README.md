@@ -1,2 +1,3 @@
-# terraform-aws-state-s3
-S3 based backend for terraform state 
+The terraform backend shall be provisioned manually from the local instance leveraging an IAM User in the target-account
+
+run terraform apply --profile {name}
