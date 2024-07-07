@@ -1,6 +1,6 @@
 variable "state_bucket_prefix" {
   description = "Creates a unique state bucket name beginning with the specified prefix."
-  default     = "tf-remote-state"
+  default     = "platform-core-cicd-manager-backend-tf-state"
 }
 
 variable "dynamodb_table_name" {

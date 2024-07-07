@@ -1,5 +1,6 @@
 provider "aws" {
   region  = "eu-central-1"
+  profile = "rwe_core_cicd_poc"
 }
 
 data "aws_caller_identity" "current" {}
@@ -38,11 +39,6 @@ resource "aws_s3_bucket" "state_bucket" {
   bucket = format("%s-%s", var.state_bucket_prefix, data.aws_caller_identity.current.account_id)
 }
 
-resource "aws_s3_bucket_acl" "state_bucket" {
-  bucket = aws_s3_bucket.state_bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_public_access_block" "state_bucket" {
   bucket = aws_s3_bucket.state_bucket.id
 
@@ -69,7 +65,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "state_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "state_bucket_force_ssl" {
-  depends_on = [aws_s3_bucket_public_access_block.state]
+  depends_on = [aws_s3_bucket_public_access_block.state_bucket]
   bucket     = aws_s3_bucket.state_bucket.id
   policy     = data.aws_iam_policy_document.state_bucket_force_ssl.json
 }

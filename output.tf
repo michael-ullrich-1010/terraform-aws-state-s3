@@ -6,5 +6,5 @@ output "account_id" {
 # ---------------------------------------------------------------------------------------------------------------------
 # ¦ aws_s3_bucket_state
 output "aws_s3_bucket_state" {
-  value = aws_s3_bucket.state
+  value = aws_s3_bucket.state_bucket
 }
