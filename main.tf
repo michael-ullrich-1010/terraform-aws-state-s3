@@ -1,10 +1,4 @@
-provider "aws" {
-  region  = "eu-central-1"
-  profile = "rwe_core_cicd_poc"
-}
-
 data "aws_caller_identity" "current" {}
-
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ¦ aws_dynamodb_table state_lock
